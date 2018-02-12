@@ -21,7 +21,11 @@ var quotes = [{
 },
 {
   quote: 'Engage your brain before you engage your weapon.',
-  source:   'General James Mattis'
+  source:   'General James Mattis',
+},
+{
+  quote: 'Theirs not to reason why, Theirs but to do and die',
+  source: 'Alfred Tennyson'
 }];
 
 // function randomly selects quote from the array
@@ -30,6 +34,17 @@ function getRandomQuote() {
   return quotes [randomNumber];
 }
 
+// Applies Random color when printQuote function executes
+function getRandomColor() {
+    var red = Math.floor(Math.random() * 256 );
+    var green = Math.floor(Math.random() * 256 );
+    var blue = Math.floor(Math.random() * 256 );
+    var rgbColor = 'rgb(' + red + ',' + green + ',' + blue + ')';
+
+    document.body.style.background = rgbColor;
+}
+
+
 // function prints quote to HTML
 function printQuote () {
   var randomQuote = getRandomQuote ();
@@ -37,10 +52,12 @@ function printQuote () {
       message += '<p class="quote">' + randomQuote.quote + '</p>';
       message += '<p class="source">' + randomQuote.source +  '</p>';
       document.getElementById('quote-box').innerHTML = message;
+// Returns random color
+      return getRandomColor();
 }
 
-// function sets 5 second intervals for a new quote to appear
-var intervalID = window.setInterval(myCallback, 5000);
+// function sets 10 second intervals for a new quote to appear
+var intervalID = window.setInterval(myCallback, 10000);
 function myCallback() {
   printQuote();
 }
